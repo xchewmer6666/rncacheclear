@@ -1,0 +1,99 @@
+#!/Users/xchewmer/.rvm/rubies/ruby-3.0.6/bin/ruby
+
+require 'date'
+
+def filebanner
+  begin
+    cmd = `cat ~/tools/rncacheclean/banner.txt`
+    puts cmd
+  rescue Exception => e
+    puts e
+  end
+end
+
+def datebanner
+  d = DateTime.now
+  d = d.strftime("%d/%m/%Y %H:%M")
+  puts d
+end
+
+def wrapperbanner
+  filebanner
+  datebanner
+end
+
+def watchmandel
+  begin
+    cmd = `watchman watch-del-all`
+    puts cmd
+  rescue Exception => e
+    puts e
+  end
+end
+
+def delpackagercache
+  begin
+    cmd = `rm -rf $TMPDIR/react-native-packager-cache-*`
+    puts cmd
+  rescue Exception => e
+    puts e
+  end
+end
+
+def delmetrobundlercache
+  begin
+    cmd = `rm -rf $TMPDIR/metro-bundler-cache-*`
+    puts cmd
+  rescue Exception => e
+    puts e
+  end
+end
+
+def delnodemodules 
+  begin
+    cmd = `rm -rf node_modules/`
+    puts cmd
+  rescue Exception => e
+    puts e
+  end
+end
+
+def yarncachecleaninstall 
+  begin
+    cmd = `yarn cache clean`
+    puts cmd
+    cmd2 = `yarn`
+    puts cmd2 
+  rescue Exception => e
+    puts e
+  end
+end
+
+def yarninstall
+  begin
+    cmd = `yarn`
+    puts cmd
+  rescue Exception => e
+    puts e
+  end
+end
+
+def main
+  wrapperbanner
+
+  watchmandel
+  puts '[+] watchmandel function end'
+  delpackagercache
+  puts '[+] delpackager function end'
+  delmetrobundlercache 
+  puts '[+] delmetrobundlercache function end'
+  delnodemodules 
+  puts '[+] delnodemodules function end'
+  yarncachecleaninstall 
+  puts '[+] yarncachecleaninstall function end'
+  yarninstall
+  puts '[+] yarninstall function end'
+end
+
+main
+
