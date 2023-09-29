@@ -1,6 +1,5 @@
 #!/Users/xchewmer/.rvm/rubies/ruby-3.0.6/bin/ruby
 
-
 def watchmandel
   cmd = `watchman watch-del-all`
   puts cmd

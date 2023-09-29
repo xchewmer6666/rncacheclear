@@ -78,6 +78,18 @@ def yarninstall
   end
 end
 
+def yarnstart
+  begin
+    cmd = `yarn`
+    puts cmd
+    cmd = `yarn start`
+    puts cmd
+  rescue Exception => e
+    puts e
+  end
+end
+
+
 def main
   wrapperbanner
 
